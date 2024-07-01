@@ -63,8 +63,6 @@ def create_picture():
     return jsonify(picture), 201
 
 
-
-
 ######################################################################
 # UPDATE A PICTURE
 ######################################################################
@@ -78,7 +76,7 @@ def update_picture(id):
             data[i] = picture
             return jsonify(picture), 201
     return jsonify({"message": "picture not found"}), 404
-            
+
 
 ######################################################################
 # DELETE A PICTURE
