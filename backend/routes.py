@@ -16,6 +16,7 @@ data: list = json.load(open(json_url))
 
 @app.route("/health")
 def health():
+    """ """
     return jsonify(dict(status="OK")), 200
 
 
@@ -26,7 +27,7 @@ def health():
 
 @app.route("/count")
 def count():
-    """return length of data"""
+    """ """
     if data:
         return jsonify(length=len(data)), 200
 
@@ -38,6 +39,7 @@ def count():
 ######################################################################
 @app.route("/picture", methods=["GET"])
 def get_pictures():
+    """ """
     return jsonify(data)
 
 
@@ -48,6 +50,11 @@ def get_pictures():
 
 @app.route("/picture/<int:id>", methods=["GET"])
 def get_picture_by_id(id):
+    """
+
+    :param id: 
+
+    """
     for item in data:
         if item["id"] == id:
             return jsonify(item), 200
@@ -59,6 +66,7 @@ def get_picture_by_id(id):
 ######################################################################
 @app.route("/picture", methods=["POST"])
 def create_picture():
+    """ """
     picture = request.get_json()
     for item in data:
         if item["id"] == picture["id"]:
@@ -79,6 +87,11 @@ def create_picture():
 
 @app.route("/picture/<int:id>", methods=["PUT"])
 def update_picture(id):
+    """
+
+    :param id: 
+
+    """
     picture = request.get_json()
     for i, pic in enumerate(data):
         if pic["id"] == id:
@@ -92,6 +105,11 @@ def update_picture(id):
 ######################################################################
 @app.route("/picture/<int:id>", methods=["DELETE"])
 def delete_picture(id):
+    """
+
+    :param id: 
+
+    """
     for i, pic in enumerate(data):
         if pic["id"] == id:
             data.pop(i)
