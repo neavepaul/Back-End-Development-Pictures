@@ -1,7 +1,9 @@
-from . import app
-import os
 import json
-from flask import jsonify, request, make_response, abort, url_for  # noqa; F401
+import os
+
+from flask import abort, jsonify, make_response, request, url_for  # noqa; F401
+
+from . import app
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 json_url = os.path.join(SITE_ROOT, "data", "pictures.json")
