@@ -56,7 +56,7 @@ def get_pictures():
 def get_picture_by_id(id):
     """
 
-    :param id: 
+    :param id:
 
     """
     for item in data:
@@ -93,7 +93,7 @@ def create_picture():
 def update_picture(id):
     """
 
-    :param id: 
+    :param id:
 
     """
     picture = request.get_json()
@@ -111,7 +111,7 @@ def update_picture(id):
 def delete_picture(id):
     """
 
-    :param id: 
+    :param id:
 
     """
     for i, pic in enumerate(data):
