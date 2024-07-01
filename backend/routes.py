@@ -75,9 +75,10 @@ def create_picture():
     for item in data:
         if item["id"] == picture["id"]:
             return (
-                jsonify(
-                    {"Message": f"picture with id {picture['id']} already present"}
-                ),
+                jsonify({
+                    "Message":
+                    f"picture with id {picture['id']} already present"
+                }),
                 302,
             )
     data.append(picture)
