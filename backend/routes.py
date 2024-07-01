@@ -16,6 +16,7 @@ data: list = json.load(open(json_url))
 def health():
     return jsonify(dict(status="OK")), 200
 
+
 ######################################################################
 # COUNT THE NUMBER OF PICTURES
 ######################################################################
@@ -36,6 +37,7 @@ def count():
 @app.route("/picture", methods=["GET"])
 def get_pictures():
     return jsonify(data)
+
 
 ######################################################################
 # GET A PICTURE
@@ -58,7 +60,12 @@ def create_picture():
     picture = request.get_json()
     for item in data:
         if item["id"] == picture["id"]:
-            return jsonify({"Message": f"picture with id {picture['id']} already present"}), 302
+            return (
+                jsonify(
+                    {"Message": f"picture with id {picture['id']} already present"}
+                ),
+                302,
+            )
     data.append(picture)
     return jsonify(picture), 201
 
@@ -72,7 +79,7 @@ def create_picture():
 def update_picture(id):
     picture = request.get_json()
     for i, pic in enumerate(data):
-        if pic['id'] == id:
+        if pic["id"] == id:
             data[i] = picture
             return jsonify(picture), 201
     return jsonify({"message": "picture not found"}), 404
@@ -84,7 +91,7 @@ def update_picture(id):
 @app.route("/picture/<int:id>", methods=["DELETE"])
 def delete_picture(id):
     for i, pic in enumerate(data):
-        if pic['id'] == id:
+        if pic["id"] == id:
             data.pop(i)
-            return '', 204
+            return "", 204
     return jsonify({"message": "picture not found"}), 404
